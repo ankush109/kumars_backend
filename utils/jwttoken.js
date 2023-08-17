@@ -15,6 +15,6 @@ res.status(statuscode).cookie("token",token,options).json({
     token,
     user
 })
-
+;
 }
 module.exports =sendtoken
