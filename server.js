@@ -1,5 +1,5 @@
 const app =require("./app")
-
+const cors= require("cors"); 
 const dotenv =require("dotenv")
 const cloudinary = require("cloudinary")
 const connectdatabase =require("./config/database")
@@ -8,7 +8,11 @@ const connectdatabase =require("./config/database")
 dotenv.config({path:"backend/config/config.env"})
 //connecting to the database :
 connectdatabase();
-
+app.use(cors());
+app.use("/",(req,res)=>{
+    res.setHeader("Access-Control-Allow-Credentials","true");
+    res.send("api is running");
+})
 
 cloudinary.config({
     cloud_name:process.env.CLOUDINARY_NAME,
