@@ -7,11 +7,11 @@ exports.isauthenticateduser = catchasyncerror(async (req, res, next) => {
     if (!token) {
         return next(new Errorhandler("please login to access this resourse", 401))
     }
-   if(token){
+ 
     const decodeddata = jwttoken.verify(token, process.env.JWT_SECRET)
     req.user = await User.findById(decodeddata.id)
     next()
-   }
+   
   // const {
   //       user
   // } = req.cookies
