@@ -7,7 +7,7 @@ const path = require("path")
 const cors = require('cors')
 const app =express()
 const corsOptions ={
-    origin:'https://kubackend.onrender.com/', 
+    origin:'https://kubackend.onrender.com', 
     credentials:true,            //access-control-allow-credentials:true
     optionSuccessStatus:200
 }
