@@ -30,9 +30,7 @@ app.use("/api/v1",user)
 app.use("/api/v1",order)
 app.use("/api/v1",payment)
 app.use("/api/v1",authRoutes)
-app.get("/",(req,res)=>{
-    res.sendFile("Api is running")
-})
+
 // middelware for error
 app.use(errormiddleware)
 module.exports = app 
