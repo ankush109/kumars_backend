@@ -6,12 +6,10 @@ const dotenv =require("dotenv")
 const path = require("path")
 const cors = require('cors')
 const app =express()
-const corsOptions ={
-    origin:'https://kumars-frontend.vercel.app', 
-    credentials:true,            //access-control-allow-credentials:true
-    optionSuccessStatus:200
-}
-app.use(cors(corsOptions))
+const corsOption = {
+    origin: [config.FRONTEND_URL, "http://localhost:3000", "https://www.docurum.com"],
+  };
+app.use(cors(corsOption))
 const errormiddleware = require("./middelware/error")
 dotenv.config({path:"config/config.env"})
 app.use(express.json())
