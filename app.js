@@ -7,7 +7,7 @@ const path = require("path")
 const cors = require('cors')
 const app =express()
 const corsOption = {
-    origin: [config.FRONTEND_URL, "http://localhost:3000", "https://www.docurum.com"],
+    origin: [ "http://localhost:3000", "https://kumars-frontend.vercel.app/"],
   };
 app.use(cors(corsOption))
 const errormiddleware = require("./middelware/error")
