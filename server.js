@@ -7,7 +7,7 @@ const path = require("path")
 const cors = require('cors')
 const app =express()
 const corsOptions ={
-    origin:['https://kumars-frontend.vercel.app',"http://localhost:3000/" ],
+    origin:true,
     credentials:true,            //access-control-allow-credentials:true
     optionSuccessStatus:200
 }
