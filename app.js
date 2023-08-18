@@ -6,11 +6,7 @@ const dotenv =require("dotenv")
 const path = require("path")
 const cors = require('cors')
 const app =express()
-const corsOptions ={
-    origin:'https://kubackend.onrender.com', 
-    credentials:true,            //access-control-allow-credentials:true
-    optionSuccessStatus:200
-}
+
 app.use(cors(corsOptions))
 const errormiddleware = require("./middelware/error")
 dotenv.config({path:"backend/config/config.env"})
