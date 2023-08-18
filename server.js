@@ -1,5 +1,5 @@
 const app =require("./app")
-
+const cors = require('cors')
 const dotenv =require("dotenv")
 const cloudinary = require("cloudinary")
 const connectdatabase =require("./config/database")
