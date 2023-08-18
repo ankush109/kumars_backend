@@ -1,34 +1,24 @@
-const express= require("express")
-const cookie =require("cookie-parser")
-const bodyparser = require("body-parser")
-const fileupload =require("express-fileupload")
+const app =require("./app")
+const cors= require("cors"); 
 const dotenv =require("dotenv")
-const path = require("path")
-const cors = require('cors')
-const app =express()
-const corsOption = {
-    origin: [ "http://localhost:3000/", "https://kumars-frontend.vercel.app/"],
-  };
-app.use(cors(corsOption))
-const errormiddleware = require("./middelware/error")
-dotenv.config({path:"config/config.env"})
-app.use(express.json())
-app.use(cookie())
-app.use(bodyparser.urlencoded({extended:true}))
-app.use(fileupload())
-//route imports
-const product =require("./routes/productrouter")
-const user = require("./routes/userroutes")
-const order =require("./routes/orderroute")
-const payment = require("./routes/paymentroute")
-const authRoutes = require('./routes/guserroutes')
+const cloudinary = require("cloudinary")
+const connectdatabase =require("./config/database")
+//config
 
-app.use("/api/v1",product)
-app.use("/api/v1",user)
-app.use("/api/v1",order)
-app.use("/api/v1",payment)
-app.use("/api/v1",authRoutes)
+dotenv.config({path:"backend/config/config.env"})
+//connecting to the database :
+connectdatabase();
+app.use(cors());
+app.use("/",(req,res)=>{
+    res.setHeader("Access-Control-Allow-Credentials","true");
+    res.send("api is running");
+})
 
-// middelware for error
-app.use(errormiddleware)
-module.exports = app 
+cloudinary.config({
+    cloud_name:process.env.CLOUDINARY_NAME,
+    api_key:process.env.CLOUDINARY_API_KEY,
+    api_secret:process.env.CLOUDINARY_SECRET
+})
+app.listen(4000,()=>{
+    console.log(`server is working on 4000`);
+})
