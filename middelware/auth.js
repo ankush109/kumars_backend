@@ -6,7 +6,7 @@ exports.isauthenticateduser = catchasyncerror(async (req, res, next) => {
     const { token } = req.cookies;
     console.log(token)
   
-    const decodeddata = jwttoken.verify(token,"ijdfalkjdflkjafdldkjhfljkhadsflkjhljfhjhflajdshfkljsah")
+    const decodeddata = jwttoken.verify(token,process.env.JWT_SECRET)
     req.user = await User.findById(decodeddata.id)
     next()
 

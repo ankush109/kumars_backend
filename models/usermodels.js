@@ -55,7 +55,7 @@ this.password = await bcrypt.hash(this.password,10)
 
 //jwt token
 userschema.methods.getJWTtoken =function(){
-return jwt.sign({id:this._id},"ijdfalkjdflkjafdldkjhfljkhadsflkjhljfhjhflajdshfkljsah",{
+return jwt.sign({id:this._id},process.env.JWT_SECRET,{
     expiresIn:process.env.JWT_EXPIRE
 
 })
