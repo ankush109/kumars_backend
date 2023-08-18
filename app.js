@@ -6,8 +6,6 @@ const dotenv =require("dotenv")
 const path = require("path")
 const cors = require('cors')
 const app =express()
-
-app.use(cors(corsOptions))
 const errormiddleware = require("./middelware/error")
 dotenv.config({path:"backend/config/config.env"})
 app.use(express.json())
