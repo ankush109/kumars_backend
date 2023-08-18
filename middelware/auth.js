@@ -5,10 +5,7 @@ const User = require("../models/usermodels")
 exports.isauthenticateduser = catchasyncerror(async (req, res, next) => {
     const { token } = req.cookies;
     console.log(token)
-    if (!token) {
-        return next(new Errorhandler("please login to access this resourse", 401))
-    }
- 
+  
     const decodeddata = jwttoken.verify(token, process.env.JWT_SECRET)
     req.user = await User.findById(decodeddata.id)
     next()
